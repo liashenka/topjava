@@ -23,7 +23,7 @@
         <th>Calories</th>
     </tr>
     <c:forEach items="${mealTos}" var="meal">
-        <tr style="color:${(meal.excess == true ? 'green' : 'red')}">
+        <tr style="color:${(meal.excess == true ? 'red' : 'green')}">
             <td><c:out value="${meal.description}"/></td>
             <td><c:out value="${meal.dateTime.toLocalDate()}"/></td>
             <td><c:out value="${meal.calories}"/></td>
