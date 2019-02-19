@@ -37,16 +37,6 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean delete(int id) {
-        log.info("delete {}", id);
-        if(repository.containsKey(id)) {
-            repository.remove(id);
-            return true;
-        } else
-            return false;
-    }
-
-    @Override
     public User save(User user) {
         log.info("save {}", user);
         if(user.isNew()){
@@ -58,9 +48,22 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public boolean delete(int id) {
+        log.info("delete {}", id);
+        if(repository.containsKey(id)) {
+            repository.remove(id);
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
     public User get(int id) {
         log.info("get {}", id);
-        return repository.get(id);
+        if(repository.containsKey(id)){
+            return repository.get(id);
+        } else
+            return null;
     }
 
     @Override
